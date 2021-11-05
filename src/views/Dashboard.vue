@@ -9,46 +9,46 @@
         <b-icon @click="archiveActive=true" class="icon h2" variant="danger" icon="archive-fill"></b-icon>
       </b-col>
     </b-row>
-      <b-row class="justify-content-between">
-        <b-col v-if="!archiveActive" cols="4" class="justify-content-md-center">
-          <h4 class="font-bold">{{ editTask ? 'Editar Tarefa: ': 'Novas Tarefas: '}}</h4>
-          <b-form @submit="addTask" @reset="onReset">
-            <b-form-group>
-              <b-form-input
-                v-model="title"
-                class="mb-2"
-                type="text"
-                placeholder="Título"
-                required
-              ></b-form-input>
-              <b-form-textarea
-                v-model="description"
-                class="mb-2"
-                placeholder="Descrição..."
-                rows="3"
-              ></b-form-textarea>
-            </b-form-group>
-            <div class="d-flex justify-content-end">
-              <b-button class="me-2" type="reset" variant="light">Limpar</b-button>
-              <b-button type="submit" variant="primary">{{ editTask ? 'Salvar' : 'Adicionar' }}</b-button>
-            </div>
-          </b-form>
-        </b-col>
-        <b-col :cols="archiveActive ? '12' : '6'">
-          <nav v-if="listTasks.length !== 0">
-            <h4 class="font-bold">{{ archiveActive ? 'Tarefas Arquivadas:' : 'Tarefas Ativas:' }}</h4>
-            <div v-if="!archiveActive" class="btn-group mb-4" role="group">
-              <button @click="toListAll"  type="button" class="btn btn-outline-primary">Todas</button>
-              <button @click="toDayList" type="button" class="btn btn-outline-primary">Do Dia</button>
-            </div>
-          </nav>
-          <Archive v-if="archiveActive" :files='archive' :icons='iconsArchive' />
-          <div v-else>
-            <List v-if="!toggleDay" :listTasks='listTasks' :icons='icons' />
-            <List v-else :listTasks='listOfDay' :icons='icons' />
+    <b-row class="justify-content-between">
+      <b-col v-if="!archiveActive" cols="12" md="5" class="justify-content-md-center">
+        <h4 class="font-bold">{{ editTask ? 'Editar Tarefa: ': 'Novas Tarefas: '}}</h4>
+        <b-form @submit="addTask" @reset="onReset">
+          <b-form-group>
+            <b-form-input
+              v-model="title"
+              class="mb-2"
+              type="text"
+              placeholder="Título"
+              required
+            ></b-form-input>
+            <b-form-textarea
+              v-model="description"
+              class="mb-2"
+              placeholder="Descrição..."
+              rows="3"
+            ></b-form-textarea>
+          </b-form-group>
+          <div class="d-flex justify-content-end">
+            <b-button class="me-2" type="reset" variant="light">Limpar</b-button>
+            <b-button type="submit" variant="primary">{{ editTask ? 'Salvar' : 'Adicionar' }}</b-button>
           </div>
-        </b-col>
-      </b-row>
+        </b-form>
+      </b-col>
+      <b-col :cols="archiveActive ? '12' : '12'" md="6">
+        <nav v-if="listTasks.length !== 0">
+          <h4 class="font-bold">{{ archiveActive ? 'Tarefas Arquivadas:' : 'Tarefas Ativas:' }}</h4>
+          <div v-if="!archiveActive" class="btn-group mb-4" role="group">
+            <button @click="toListAll"  type="button" class="btn btn-outline-primary">Todas</button>
+            <button @click="toDayList" type="button" class="btn btn-outline-primary">Do Dia</button>
+          </div>
+        </nav>
+        <Archive v-if="archiveActive" :files='archive' :icons='iconsArchive' />
+        <div v-else>
+          <List v-if="!toggleDay" :listTasks='listTasks' :icons='icons' />
+          <List v-else :listTasks='listOfDay' :icons='icons' />
+        </div>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
