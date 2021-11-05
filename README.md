@@ -1,19 +1,39 @@
-# coblue
+# CoBlue - Desenvolvedor Front End
 
-## Project setup
-```
-npm install
+**TESTE PRÁTICO**
+
+
+## 💻 Projeto
+
+Desenvolver um gerenciador de tarefas - TO DO LIST. O projeto permite cadastrar o título, a descrição, concluir, editar, excluir e arquivar as tarefas.  
+
+## 📥 Instalação
+
+Faça um clone desse repositório e acesse o diretório.
+
+```bash
+$ git clone git@github.com:ARSJ13/coblue.git coblue && cd coblue
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+Instale as dependências.
+
+```bash
+$ npm install
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+Execute o projeto.
+
+```bash
+$ npm start
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## 💻 Hard Skills
+
+**Vue.js**
+
+**Vue Router**
+
+**Vuex**
+
+**BootstrapVue**
