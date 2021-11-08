@@ -137,13 +137,22 @@ export default {
           date: new Date().toLocaleDateString()
         }
       if (!this.editTask) {
-        this.$store.commit('ADD_TASK', form)
-        this.onReset()
+        Promise.all([form])
+          .then(([form]) => {
+            console.log(form)
+            this.$store.commit('ADD_TASK', form)
+          })
+          .finally(() => this.onReset())
       
       } else {
-        this.$store.commit('EDIT_TASK', { ...form, index: this.indexTask })
-        this.onReset()
-        this.editTask = false
+        Promise.all([form])
+          .then(([form]) => {
+            this.$store.commit('EDIT_TASK', { ...form, index: this.indexTask })
+          })
+          .finally(() => {
+            this.onReset()
+            this.editTask = false
+          })
       }
     },
     onReset() {
